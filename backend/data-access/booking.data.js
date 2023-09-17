@@ -1,4 +1,3 @@
-const booking = require('../models/booking.model');
 const bookingModel = require('../models/booking.model');
 
 exports.findAll = async (filter, projection) => {

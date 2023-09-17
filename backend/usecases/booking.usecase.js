@@ -1,8 +1,12 @@
-const booking = require('../models/booking.model');
 const bookingData = require('../data-access/booking.data');
 
 exports.showBooking = async() => {
-    return bookingData.findAll();
+    const booking = await bookingData.findAll();
+    if(!booking){
+      return {error: 'No se encontró ningún cliente'}
+    } else {
+      return {success: booking}
+    }
 }
 
 exports.createDate = async(dateInfo) => {

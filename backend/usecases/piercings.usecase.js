@@ -1,7 +1,12 @@
 const piercingsData = require('../data-access/piercings.data');
 
 exports.showPiercings = async() => {
-    return piercingsData.findAll();
+    const piercings = await piercingsData.findAll();
+    if(!piercings){
+      return {error: 'No se encontró ningún cliente'}
+    } else {
+      return {success: piercings}
+    }
 }
 
 exports.createPiercing = async(piercingInfo) => {

@@ -1,7 +1,12 @@
 const tattoosData = require('../controller/data-access/tattoos.data');
 
 exports.showTattoos = async() => {
-    return await tattoosData.findAll();
+    const tattoos = await tattoosData.findAll();
+    if(!tattoos){
+      return {error: 'No se encontró ningún cliente'}
+    } else {
+      return {success: tattoos}
+    }
 };
 
 exports.createTattoo = async(tattooInfo) => {
@@ -29,7 +34,7 @@ exports.updateTattoo = async(tattooUpdate) => {
         autor: autor,
         imagen: imagen
     }
-    const tattooUpdated = await tattoosData.updateOne({nombre: nombre})
+    const tattooUpdated = await tattoosData.updateOne({nombre: nombre}, infoToUpdate)
     if(!clientUpdated){
         return {error: 'No se actualizó'}
     } else {

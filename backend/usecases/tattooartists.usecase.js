@@ -1,16 +1,21 @@
-const tattooartistsdata = require('../data-access/tattooartists.data');
+const tattooartistsData = require('../data-access/tattooartists.data');
 
 exports.showTattooArtists = async() => {
-    return tattooartistsdata.findAll();
+    const tattooArtists = await tattooartistsData.findAll();
+    if(!tattooArtists){
+      return {error: 'No se encontró ningún cliente'}
+    } else {
+      return {success: tattooArtists}
+    }
 };
 
 exports.createTattooArtists = async(tattooartistInfo) => {
     const {nombre, apellido, celular, documento, correo, contrasena} = tattooartistInfo
-    const tattooArtistExists = await tattooartistsdata.findOneResult({documento: documento});
+    const tattooArtistExists = await tattooartistsData.findOneResult({documento: documento});
     if(tattooArtistExists){
         return {error: 'Ya existe el tatuador'}
     }
-    const createTattooArtists = await tattooartistsdata.insertOne(tattooartistInfo);
+    const createTattooArtists = await tattooartistsData.insertOne(tattooartistInfo);
     if(!createTattooArtists) {
         return {error: 'No se creó'}
     } else {
@@ -28,8 +33,8 @@ exports.updateTattooArtist = async(infoUpdate) => {
         correo: correo,
         contrasena: contrasena
     }
-    const tattooArtistUpdated = await tattooartistsdata.updateOne({documento: documento});
-    if(!clientUpdated){
+    const tattooArtistUpdated = await tattooartistsData.updateOne({documento: documento}, infoToUpdate);
+    if(!tattooArtistUpdated){
         return {error: 'No se actualizó'}
     } else {
         return{success: 'Actualizado'};
@@ -37,8 +42,8 @@ exports.updateTattooArtist = async(infoUpdate) => {
 }
 
 exports.deleteTattooArtist = async(id) =>{
-    const tattooArtistDeleted = await tattooartistsdata.deleteOne(id);
-    if(clientDeleted){
+    const tattooArtistDeleted = await tattooartistsData.deleteOne(id);
+    if(tattooArtistDeleted){
         return {success: 'Se eliminó exitosamente'}
     } else {
         return {error: 'No se eliminó'}
