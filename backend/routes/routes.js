@@ -12,4 +12,4 @@ router.delete('/deleteclient', controllerClients.deleteClientController);
 
 router.post('/newbooking', controllerBooking.createBookingController);
 router.post('/newpiercing', controllerPiercings.createPiercingController);
-module.exports = router
+module.exports = router;
