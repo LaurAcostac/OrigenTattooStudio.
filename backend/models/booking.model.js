@@ -4,6 +4,7 @@ const SchemaBooking = new mongoose.Schema({
   fechaCita: {
     type: Date,
     required: [true, 'Se require seleccionar una fecha'],
+    unique: [true, 'Ya existe una cita para esa hora']
   },
   idTatuador: {
     type: String,

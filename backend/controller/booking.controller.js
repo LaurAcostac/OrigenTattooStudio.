@@ -46,7 +46,7 @@ exports.updateBookingController = async (req, res) =>{
       });
     } else if (result.success) {
       return res.json({
-        error: result.success,
+        success: result.success,
       });
     }
   } catch (error) {
@@ -64,7 +64,7 @@ exports.deleteBookingController = async (req, res) => {
       });
     } else if (result.success) {
       return res.json({
-        error: result.success,
+        success: result.success,
       });
     }
   } catch (error) {
