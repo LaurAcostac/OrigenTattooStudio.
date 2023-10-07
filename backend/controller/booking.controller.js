@@ -39,7 +39,7 @@ exports.createBookingController = async (req, res) => {
 exports.updateBookingController = async (req, res) =>{
   try {
     const result = await bookingUseCases.updateDate(req.body);
-
+    console.log(result)
     if (result.error) {
       return res.json({
         error: result.error,
