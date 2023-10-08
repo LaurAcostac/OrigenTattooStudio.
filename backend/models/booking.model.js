@@ -23,6 +23,9 @@ const SchemaBooking = new mongoose.Schema({
   estado: {
     type: String,
     required: [true, 'Es requerido establecer un estado para la cita'],
+  },
+  fotoConsentimiento: {
+    type: String
   }});
 
 const booking = mongoose.model('booking', SchemaBooking);

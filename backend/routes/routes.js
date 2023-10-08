@@ -41,7 +41,7 @@ const controllerUsers = require('../controller/users.controller');
  *              idTatuador: 6518678fbd8dc7609a105f63
  *              idTatuaje: 4733749379739857345735
  */
-
+//SHOW BOOKING
 /**
  * @swagger
  * /api/v1/showbooking:
@@ -60,6 +60,7 @@ const controllerUsers = require('../controller/users.controller');
  *                              $ref: '#/components/schemas/Booking'
  */
 router.get('/showbooking', controllerBooking.showBookingController);
+//CREATE BOOKING
 /**
  * @swagger
  * /api/v1/newbooking:
@@ -78,6 +79,7 @@ router.get('/showbooking', controllerBooking.showBookingController);
  *              description: new date created success
  */
 router.post('/newbooking', controllerBooking.createBookingController);
+//UPDATE BOOKING
 /**
  * @swagger
  * /api/v1/updatebooking:
@@ -93,11 +95,12 @@ router.post('/newbooking', controllerBooking.createBookingController);
  *                      $ref: '#/components/schemas/Booking'
  *      responses:
  *          200:
- *              description: new date updated successfully
+ *              description: date updated successfully
  *          404:
  *              description: booking not found
  */
 router.put('/updatebooking', controllerBooking.updateBookingController);
+//DELETE BOOKING
 /**
  * @swagger
  * /api/v1/deletebooking:
@@ -121,34 +124,476 @@ router.delete('/deletebooking', controllerBooking.deleteBookingController);
 
 //Clients
 /**
- * 
+ * @swagger
+ * components:
+ *  schemas:
+ *      Clients:
+ *          type: object
+ *          properties:
+ *              nombre: 
+ *                  type: string
+ *              apellido: 
+ *                  type: string
+ *              celular: 
+ *                  type: string
+ *              documento: 
+ *                  type: string
+ *              correo: 
+ *                  type: string
+ *              fechaNacimiento: 
+ *                  type: string
+ *              alergias:
+ *                  type: string
+ *              idTatuaje:
+ *                  type: string
+ *              idPiercing:
+ *                  type: string
+ *              contrasena:
+ *                  type: string
+ *              fotoDocumento:
+ *                  type: string
+ *          required:
+ *              - nombre
+ *              - apellido
+ *              - celular
+ *              - documento
+ *              - correo
+ *              - fechaNacimiento
+ *              - contrasena
+ *              - fotoDocumento
+ *          example:
+ *              nombre: Laura 
+ *              apellido: Acosta    
+ *              celular: 3053792464
+ *              documento: 1038262440
+ *              correo: lacosta@gmail.com
+ *              fechaNacimiento: 2004-21-12
+ *              alergias: Ninguna
+ *              idTatuaje: 1231432243423424
+ *              idPiercing: 343648358353555
+ *              contrasena: 12345678
+ *              fotoDocumento: https://img.freepik.com/foto-gratis/disparo-gran-angular-solo-arbol-que-crece-cielo-nublado-puesta-sol-rodeada-cesped_181624-22807.jpg
+ */
+//SHOW CLIENT
+/**
+ * @swagger
+ * /api/v1/showclient:
+ *  get:
+ *      summary: show clients
+ *      tags: [Clients]
+ *    
+ *      responses:
+ *          200:
+ *              description: all clients
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items:
+ *                              $ref: '#/components/schemas/Clients'
  */
 router.get('/showclient', controllerClients.showClientController);
+//CREATE CLIENT
+/**
+ * @swagger
+ * /api/v1/newclient:
+ *  post:
+ *      summary: create a new date
+ *      tags: [Clients]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Clients'
+ *      responses:
+ *          200:
+ *              description: new client created successfully
+ */
 router.post('/newclient', controllerClients.createClientController);
+//UPDATE CLIENT
+/**
+ * @swagger
+ * /api/v1/updateclient:
+ *  put:
+ *      summary: update a date
+ *      tags: [Clients]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Clients'
+ *      responses:
+ *          200:
+ *              description: client updated successfully
+ *          404:
+ *              description: client not found
+ */
 router.put('/updateclient', controllerClients.updateClientController);
 router.delete('/deleteclient', controllerClients.deleteClientController);
 
 //Piercings
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *      Piercings:
+ *          type: object
+ *          properties:
+ *              nombre: 
+ *                  type: string
+ *              zona:
+ *                  type: string
+ *              imagen:
+ *                  type: string
+ *          required:
+ *              - nombre
+ *              - zona
+ *              - imagen
+ *          example:
+ *              nombre: Septum
+ *              zona: Septo de la nariz
+ *              imagen: https://t1.uc.ltmcdn.com/es/posts/4/6/8/tipos_de_piercing_en_la_nariz_y_como_se_cuidan_51864_600.jpg
+ */
+//SHOW PIERCINGS
+/**
+ * @swagger
+ * /api/v1/showpiercing:
+ *  get:
+ *      summary: show piercings
+ *      tags: [Piercings]
+ *    
+ *      responses:
+ *          200:
+ *              description: all piercings
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items:
+ *                              $ref: '#/components/schemas/Piercings'
+ */
 router.get('/showpiercing', controllerPiercings.showPiercingController);
+//CREATE PIERCING
+/**
+ * @swagger
+ * /api/v1/newpiercing:
+ *  post:
+ *      summary: create a new piercing
+ *      tags: [Piercings]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Piercings'
+ *      responses:
+ *          200:
+ *              description: new piercing created successfully
+ */
 router.post('/newpiercing', controllerPiercings.createPiercingController);
+//UPDATE PIERCING
+/**
+ * @swagger
+ * /api/v1/updatebooking:
+ *  put:
+ *      summary: update a date
+ *      tags: [Booking]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Booking'
+ *      responses:
+ *          200:
+ *              description: date updated successfully
+ *          404:
+ *              description: booking not found
+ */
 router.put('/updatepiercing', controllerPiercings.updatePiercingController);
 router.delete('/deletepiercing', controllerPiercings.deletePiercingController);
 
 //Tattoos
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *      Tattoos:
+ *          type: object
+ *          properties:
+ *              nombre:
+ *                  type: string
+ *              descripcion:
+ *                  type: string
+ *              tamano:
+ *                  type: string
+ *              color: 
+ *                  type: string
+ *              tecnica:
+ *                  type: string
+ *              autor:
+ *                  type: string
+ *              imagen:
+ *                  type: string
+ *          required:
+ *              - nombre
+ *              - descripcion
+ *              - tamano
+ *              - color
+ *              - tecnica
+ *          example:
+ *              nombre: Flores
+ *              descripcion: flores realistas
+ *              tamano: 23cm
+ *              color: negro
+ *              tecnica: realismo
+ *              autor: Adrian Sangronis
+ *              imagen: https://tropicantattoo.es/wp-content/uploads/2021/03/Tattoo-rosas-neotradicional-valencia-tropicantattoo.jpg
+ */
+//SHOW TATTOOS
+/**
+ * @swagger
+ * /api/v1/showtattoo:
+ *  get:
+ *      summary: show tattoos
+ *      tags: [Tattoos]
+ *    
+ *      responses:
+ *          200:
+ *              description: all tattoos
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items:
+ *                              $ref: '#/components/schemas/Tattoos'
+ */
 router.get('/showtattoo', controllerTattoos.showTattooController);
+//CREATE TATTOO
+/**
+ * @swagger
+ * /api/v1/newtattoo:
+ *  post:
+ *      summary: create a new tattoo
+ *      tags: [Tattoos]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Tattoos'
+ *      responses:
+ *          200:
+ *              description: new tattoo created successfully
+ */
 router.post('/newtattoo', controllerTattoos.createTattooController);
+//UPDATE TATTOO
+/**
+ * @swagger
+ * /api/v1/updatebooking:
+ *  put:
+ *      summary: update a date
+ *      tags: [Booking]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Booking'
+ *      responses:
+ *          200:
+ *              description: date updated successfully
+ *          404:
+ *              description: booking not found
+ */
 router.put('/updatetattoo', controllerTattoos.updateTattooController);
 router.delete('/deletetattoo', controllerTattoos.deleteTattooController);
 
 //Users
-router.get('/showusers', controllerUsers.showUserController);
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *      Users:
+ *          type: object
+ *          properties:
+ *              correo:
+ *                  type: string
+ *              contrasena:
+ *                  type: string
+ *              rol:
+ *                  type: string
+ *          required:
+ *              - correo
+ *              - contrasena
+ *              - rol
+ *          example:
+ *              correo: asangronis@gmail.com
+ *              contrasena: tatuajes
+ *              rol: tatuador
+ */
+//SHOW USERS
+/**
+ * @swagger
+ * /api/v1/showuser:
+ *  get:
+ *      summary: show users
+ *      tags: [Users]
+ *    
+ *      responses:
+ *          200:
+ *              description: all users
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items:
+ *                              $ref: '#/components/schemas/Users'
+ */
+router.get('/showuser', controllerUsers.showUserController);
+//CREATE USER
+/**
+ * @swagger
+ * /api/v1/newuser:
+ *  post:
+ *      summary: create a new user
+ *      tags: [Users]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Users'
+ *      responses:
+ *          200:
+ *              description: new user created success
+ */
 router.post('/newuser', controllerUsers.createUserController);
+//UPDATE USER
+/**
+ * @swagger
+ * /api/v1/updatebooking:
+ *  put:
+ *      summary: update a date
+ *      tags: [Booking]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Booking'
+ *      responses:
+ *          200:
+ *              description: date updated successfully
+ *          404:
+ *              description: booking not found
+ */
 router.put('/updateuser', controllerUsers.updateUserController);
 router.delete('/deleteuser', controllerUsers.deleteUserController);
 
 //tattooartists
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *      TattooArtists:
+ *          type: object
+ *          properties:
+ *              nombre:
+ *                  type: string
+ *              apellido:
+ *                  type: string
+ *              celular:
+ *                  type: string
+ *              documento:
+ *                  type: string
+ *              correo:
+ *                  type: string
+ *              contrasena:
+ *                  type: string
+ *          required:
+ *              - nombre
+ *              - apellido
+ *              - celular
+ *              - documento
+ *              - correo
+ *              - contrasena
+ *          example:
+ *              nombre: Adrian
+ *              apellido: Sangronis
+ *              celular: 3226547687
+ *              documento: 76543456
+ *              correo: asangronis@gmail.com
+ *              contrasena: tatuajes
+ */
+//SHOW TATTOOARTISTS
+/**
+ * @swagger
+ * /api/v1/showtattooartist:
+ *  get:
+ *      summary: show tattoo artists
+ *      tags: [TattooArtists]
+ *    
+ *      responses:
+ *          200:
+ *              description: all tattoo artists
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items:
+ *                              $ref: '#/components/schemas/TattooArtists'
+ */
 router.get('/showtattooartist', controllerTattooArtists.showTattooArtistController);
+//CREATE TATTOOARTIST
+/**
+ * @swagger
+ * /api/v1/newtattooartist:
+ *  post:
+ *      summary: create a new tattooartist
+ *      tags: [TattooArtists]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/TattooArtists'
+ *      responses:
+ *          200:
+ *              description: new tattoo artists created successfully
+ */
 router.post('/newtattooartist', controllerTattooArtists.createtattooArtistController);
+//UPDATE TATTOOARTIST --- FALTA
+/**
+ * @swagger
+ * /api/v1/updatebooking:
+ *  put:
+ *      summary: update a date
+ *      tags: [Booking]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Booking'
+ *      responses:
+ *          200:
+ *              description: date updated successfully
+ *          404:
+ *              description: booking not found
+ */
 router.put('/updatetattoartist', controllerTattooArtists.updatetattooArtistController);
 router.delete('/deletetattoortist', controllerTattooArtists.deletetattooArtistController);
 module.exports = router
