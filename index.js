@@ -2,15 +2,15 @@ const express = require('express');
 const app = express();
 const routes = require('./backend/routes/routes');
 require('dotenv').config();
-//swagger
+// swagger
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 const path = require('path')
 
 swaggerSpec = {
   definition: {
-      openapi: '3.0.0',
-      info: {
+    openapi: '3.0.0',
+    info: {
       title: 'NodeJS MongoDB API',
       version: '1.0.0',
     },

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-//Controllers
+// Controllers
 const controllerBooking = require('../controller/booking.controller');
 const controllerClients = require('../controller/clients.controller');
 const controllerPiercings = require('../controller/piercings.controller');
@@ -9,7 +9,7 @@ const controllerTattooArtists = require('../controller/tattooartists.controller'
 const controllerTattoos = require('../controller/tattoos.controller');
 const controllerUsers = require('../controller/users.controller');
 
-//Booking
+// Booking
 /**
  * @swagger
  * components:
@@ -17,17 +17,17 @@ const controllerUsers = require('../controller/users.controller');
  *      Booking:
  *          type: object
  *          properties:
- *              fechaCita: 
+ *              fechaCita:
  *                  type: date
- *              estado: 
+ *              estado:
  *                  type: string
- *              idCliente: 
+ *              idCliente:
  *                  type: string
- *              idTatuador: 
+ *              idTatuador:
  *                  type: string
- *              idPiercing: 
+ *              idPiercing:
  *                  type: string
- *              idTatuaje: 
+ *              idTatuaje:
  *                  type: string
  *          required:
  *              - fechaCita
@@ -41,14 +41,13 @@ const controllerUsers = require('../controller/users.controller');
  *              idTatuador: 6518678fbd8dc7609a105f63
  *              idTatuaje: 4733749379739857345735
  */
-//SHOW BOOKING
+// SHOW BOOKING
 /**
  * @swagger
  * /api/v1/showbooking:
  *  get:
  *      summary: show dates
  *      tags: [Booking]
- *    
  *      responses:
  *          200:
  *              description: all bookings
@@ -60,7 +59,7 @@ const controllerUsers = require('../controller/users.controller');
  *                              $ref: '#/components/schemas/Booking'
  */
 router.get('/showbooking', controllerBooking.showBookingController);
-//CREATE BOOKING
+// CREATE BOOKING
 /**
  * @swagger
  * /api/v1/newbooking:
@@ -79,7 +78,7 @@ router.get('/showbooking', controllerBooking.showBookingController);
  *              description: new date created success
  */
 router.post('/newbooking', controllerBooking.createBookingController);
-//UPDATE BOOKING
+// UPDATE BOOKING
 /**
  * @swagger
  * /api/v1/updatebooking:
@@ -100,7 +99,7 @@ router.post('/newbooking', controllerBooking.createBookingController);
  *              description: booking not found
  */
 router.put('/updatebooking', controllerBooking.updateBookingController);
-//DELETE BOOKING
+// DELETE BOOKING
 /**
  * @swagger
  * /api/v1/deletebooking:
@@ -109,7 +108,7 @@ router.put('/updatebooking', controllerBooking.updateBookingController);
  *      tags: [Booking]
  *      requestBody:
  *          required: true
- *          content: 
+ *          content:
  *              application/json:
  *                  chema:
  *                      type: object
@@ -122,7 +121,7 @@ router.put('/updatebooking', controllerBooking.updateBookingController);
  */
 router.delete('/deletebooking', controllerBooking.deleteBookingController);
 
-//Clients
+// Clients
 /**
  * @swagger
  * components:
@@ -130,17 +129,17 @@ router.delete('/deletebooking', controllerBooking.deleteBookingController);
  *      Clients:
  *          type: object
  *          properties:
- *              nombre: 
+ *              nombre:
  *                  type: string
- *              apellido: 
+ *              apellido:
  *                  type: string
- *              celular: 
+ *              celular:
  *                  type: string
- *              documento: 
+ *              documento:
  *                  type: string
- *              correo: 
+ *              correo:
  *                  type: string
- *              fechaNacimiento: 
+ *              fechaNacimiento:
  *                  type: string
  *              alergias:
  *                  type: string
@@ -162,8 +161,8 @@ router.delete('/deletebooking', controllerBooking.deleteBookingController);
  *              - contrasena
  *              - fotoDocumento
  *          example:
- *              nombre: Laura 
- *              apellido: Acosta    
+ *              nombre: Laura
+ *              apellido: Acosta
  *              celular: 3053792464
  *              documento: 1038262440
  *              correo: lacosta@gmail.com
@@ -174,14 +173,13 @@ router.delete('/deletebooking', controllerBooking.deleteBookingController);
  *              contrasena: 12345678
  *              fotoDocumento: https://img.freepik.com/foto-gratis/disparo-gran-angular-solo-arbol-que-crece-cielo-nublado-puesta-sol-rodeada-cesped_181624-22807.jpg
  */
-//SHOW CLIENT
+// SHOW CLIENT
 /**
  * @swagger
  * /api/v1/showclient:
  *  get:
  *      summary: show clients
  *      tags: [Clients]
- *    
  *      responses:
  *          200:
  *              description: all clients
@@ -193,12 +191,12 @@ router.delete('/deletebooking', controllerBooking.deleteBookingController);
  *                              $ref: '#/components/schemas/Clients'
  */
 router.get('/showclient', controllerClients.showClientController);
-//CREATE CLIENT
+// CREATE CLIENT
 /**
  * @swagger
  * /api/v1/newclient:
  *  post:
- *      summary: create a new date
+ *      summary: create a new client
  *      tags: [Clients]
  *      requestBody:
  *          required: true
@@ -212,12 +210,12 @@ router.get('/showclient', controllerClients.showClientController);
  *              description: new client created successfully
  */
 router.post('/newclient', controllerClients.createClientController);
-//UPDATE CLIENT
+// UPDATE CLIENT
 /**
  * @swagger
  * /api/v1/updateclient:
  *  put:
- *      summary: update a date
+ *      summary: update a client
  *      tags: [Clients]
  *      requestBody:
  *          required: true
@@ -233,9 +231,29 @@ router.post('/newclient', controllerClients.createClientController);
  *              description: client not found
  */
 router.put('/updateclient', controllerClients.updateClientController);
+// DELETE CLIENT
+/**
+ * @swagger
+ * /api/v1/deleteclient:
+ *  delete:
+ *      summary: delete a client
+ *      tags: [Clients]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  chema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Clients'
+ *      responses:
+ *          200:
+ *              description: client deleted
+ *          400:
+ *              description: client not found
+ */
 router.delete('/deleteclient', controllerClients.deleteClientController);
 
-//Piercings
+// Piercings
 /**
  * @swagger
  * components:
@@ -243,7 +261,7 @@ router.delete('/deleteclient', controllerClients.deleteClientController);
  *      Piercings:
  *          type: object
  *          properties:
- *              nombre: 
+ *              nombre:
  *                  type: string
  *              zona:
  *                  type: string
@@ -258,14 +276,13 @@ router.delete('/deleteclient', controllerClients.deleteClientController);
  *              zona: Septo de la nariz
  *              imagen: https://t1.uc.ltmcdn.com/es/posts/4/6/8/tipos_de_piercing_en_la_nariz_y_como_se_cuidan_51864_600.jpg
  */
-//SHOW PIERCINGS
+// SHOW PIERCINGS
 /**
  * @swagger
  * /api/v1/showpiercing:
  *  get:
  *      summary: show piercings
  *      tags: [Piercings]
- *    
  *      responses:
  *          200:
  *              description: all piercings
@@ -277,7 +294,7 @@ router.delete('/deleteclient', controllerClients.deleteClientController);
  *                              $ref: '#/components/schemas/Piercings'
  */
 router.get('/showpiercing', controllerPiercings.showPiercingController);
-//CREATE PIERCING
+// CREATE PIERCING
 /**
  * @swagger
  * /api/v1/newpiercing:
@@ -296,30 +313,50 @@ router.get('/showpiercing', controllerPiercings.showPiercingController);
  *              description: new piercing created successfully
  */
 router.post('/newpiercing', controllerPiercings.createPiercingController);
-//UPDATE PIERCING
+// UPDATE PIERCING
 /**
  * @swagger
- * /api/v1/updatebooking:
+ * /api/v1/updatepiercing:
  *  put:
- *      summary: update a date
- *      tags: [Booking]
+ *      summary: update a piercing
+ *      tags: [Piercings]
  *      requestBody:
  *          required: true
  *          content:
  *              application/json:
  *                  schema:
  *                      type: object
- *                      $ref: '#/components/schemas/Booking'
+ *                      $ref: '#/components/schemas/Piercings'
  *      responses:
  *          200:
- *              description: date updated successfully
+ *              description: piercing updated successfully
  *          404:
- *              description: booking not found
+ *              description: piercing not found
  */
 router.put('/updatepiercing', controllerPiercings.updatePiercingController);
+// DELETE PIERCING
+/**
+ * @swagger
+ * /api/v1/deletepiercing:
+ *  delete:
+ *      summary: delete a piercing
+ *      tags: [Piercings]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  chema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Piercings'
+ *      responses:
+ *          200:
+ *              description: piercing deleted
+ *          400:
+ *              description: piercing not found
+ */
 router.delete('/deletepiercing', controllerPiercings.deletePiercingController);
 
-//Tattoos
+// Tattoos
 /**
  * @swagger
  * components:
@@ -333,7 +370,7 @@ router.delete('/deletepiercing', controllerPiercings.deletePiercingController);
  *                  type: string
  *              tamano:
  *                  type: string
- *              color: 
+ *              color:
  *                  type: string
  *              tecnica:
  *                  type: string
@@ -356,14 +393,13 @@ router.delete('/deletepiercing', controllerPiercings.deletePiercingController);
  *              autor: Adrian Sangronis
  *              imagen: https://tropicantattoo.es/wp-content/uploads/2021/03/Tattoo-rosas-neotradicional-valencia-tropicantattoo.jpg
  */
-//SHOW TATTOOS
+// SHOW TATTOOS
 /**
  * @swagger
  * /api/v1/showtattoo:
  *  get:
  *      summary: show tattoos
  *      tags: [Tattoos]
- *    
  *      responses:
  *          200:
  *              description: all tattoos
@@ -375,7 +411,7 @@ router.delete('/deletepiercing', controllerPiercings.deletePiercingController);
  *                              $ref: '#/components/schemas/Tattoos'
  */
 router.get('/showtattoo', controllerTattoos.showTattooController);
-//CREATE TATTOO
+// CREATE TATTOO
 /**
  * @swagger
  * /api/v1/newtattoo:
@@ -394,30 +430,50 @@ router.get('/showtattoo', controllerTattoos.showTattooController);
  *              description: new tattoo created successfully
  */
 router.post('/newtattoo', controllerTattoos.createTattooController);
-//UPDATE TATTOO
+// UPDATE TATTOO
 /**
  * @swagger
- * /api/v1/updatebooking:
+ * /api/v1/updatetattoo:
  *  put:
- *      summary: update a date
- *      tags: [Booking]
+ *      summary: update a tattoo
+ *      tags: [Tattoos]
  *      requestBody:
  *          required: true
  *          content:
  *              application/json:
  *                  schema:
  *                      type: object
- *                      $ref: '#/components/schemas/Booking'
+ *                      $ref: '#/components/schemas/Tattoos'
  *      responses:
  *          200:
- *              description: date updated successfully
+ *              description: tattoo updated successfully
  *          404:
- *              description: booking not found
+ *              description: tattoo not found
  */
 router.put('/updatetattoo', controllerTattoos.updateTattooController);
+// DELETE TATTOO
+/**
+ * @swagger
+ * /api/v1/deletetattoo:
+ *  delete:
+ *      summary: delete a tattoo
+ *      tags: [Tattoos]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  chema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Tattoos'
+ *      responses:
+ *          200:
+ *              description: tattoo deleted
+ *          400:
+ *              description: tattoo not found
+ */
 router.delete('/deletetattoo', controllerTattoos.deleteTattooController);
 
-//Users
+// Users
 /**
  * @swagger
  * components:
@@ -440,14 +496,13 @@ router.delete('/deletetattoo', controllerTattoos.deleteTattooController);
  *              contrasena: tatuajes
  *              rol: tatuador
  */
-//SHOW USERS
+// SHOW USERS
 /**
  * @swagger
  * /api/v1/showuser:
  *  get:
  *      summary: show users
  *      tags: [Users]
- *    
  *      responses:
  *          200:
  *              description: all users
@@ -459,7 +514,7 @@ router.delete('/deletetattoo', controllerTattoos.deleteTattooController);
  *                              $ref: '#/components/schemas/Users'
  */
 router.get('/showuser', controllerUsers.showUserController);
-//CREATE USER
+// CREATE USER
 /**
  * @swagger
  * /api/v1/newuser:
@@ -478,30 +533,50 @@ router.get('/showuser', controllerUsers.showUserController);
  *              description: new user created success
  */
 router.post('/newuser', controllerUsers.createUserController);
-//UPDATE USER
+// UPDATE USER
 /**
  * @swagger
- * /api/v1/updatebooking:
+ * /api/v1/updateuser:
  *  put:
- *      summary: update a date
- *      tags: [Booking]
+ *      summary: update a user
+ *      tags: [Users]
  *      requestBody:
  *          required: true
  *          content:
  *              application/json:
  *                  schema:
  *                      type: object
- *                      $ref: '#/components/schemas/Booking'
+ *                      $ref: '#/components/schemas/Users'
  *      responses:
  *          200:
- *              description: date updated successfully
+ *              description: user updated successfully
  *          404:
- *              description: booking not found
+ *              description: user not found
  */
 router.put('/updateuser', controllerUsers.updateUserController);
+// DELETE USERS
+/**
+ * @swagger
+ * /api/v1/deleteuser:
+ *  delete:
+ *      summary: delete a user
+ *      tags: [Users]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  chema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Users'
+ *      responses:
+ *          200:
+ *              description: user deleted
+ *          400:
+ *              description: user not found
+ */
 router.delete('/deleteuser', controllerUsers.deleteUserController);
 
-//tattooartists
+// tattooartists
 /**
  * @swagger
  * components:
@@ -536,14 +611,13 @@ router.delete('/deleteuser', controllerUsers.deleteUserController);
  *              correo: asangronis@gmail.com
  *              contrasena: tatuajes
  */
-//SHOW TATTOOARTISTS
+// SHOW TATTOOARTISTS
 /**
  * @swagger
  * /api/v1/showtattooartist:
  *  get:
  *      summary: show tattoo artists
  *      tags: [TattooArtists]
- *    
  *      responses:
  *          200:
  *              description: all tattoo artists
@@ -555,12 +629,12 @@ router.delete('/deleteuser', controllerUsers.deleteUserController);
  *                              $ref: '#/components/schemas/TattooArtists'
  */
 router.get('/showtattooartist', controllerTattooArtists.showTattooArtistController);
-//CREATE TATTOOARTIST
+// CREATE TATTOOARTIST
 /**
  * @swagger
  * /api/v1/newtattooartist:
  *  post:
- *      summary: create a new tattooartist
+ *      summary: create a new tattoo artist
  *      tags: [TattooArtists]
  *      requestBody:
  *          required: true
@@ -574,26 +648,46 @@ router.get('/showtattooartist', controllerTattooArtists.showTattooArtistControll
  *              description: new tattoo artists created successfully
  */
 router.post('/newtattooartist', controllerTattooArtists.createtattooArtistController);
-//UPDATE TATTOOARTIST --- FALTA
+// UPDATE TATTOOARTIST
 /**
  * @swagger
- * /api/v1/updatebooking:
+ * /api/v1/updatetattooartist:
  *  put:
- *      summary: update a date
- *      tags: [Booking]
+ *      summary: update a tattoo artist
+ *      tags: [TattooArtists]
  *      requestBody:
  *          required: true
  *          content:
  *              application/json:
  *                  schema:
  *                      type: object
- *                      $ref: '#/components/schemas/Booking'
+ *                      $ref: '#/components/schemas/TattooArtists'
  *      responses:
  *          200:
- *              description: date updated successfully
+ *              description: tattoo artist updated successfully
  *          404:
- *              description: booking not found
+ *              description: tattoo artist not found
  */
 router.put('/updatetattoartist', controllerTattooArtists.updatetattooArtistController);
+// DELETE TATTOOARTIST
+/**
+ * @swagger
+ * /api/v1/deletetattooartist:
+ *  delete:
+ *      summary: delete a tattoo artist
+ *      tags: [TattooArtists]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  chema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/TattooArtists'
+ *      responses:
+ *          200:
+ *              description: tattoo artist deleted
+ *          400:
+ *              description: tattoo artist not found
+ */
 router.delete('/deletetattoortist', controllerTattooArtists.deletetattooArtistController);
-module.exports = router
+module.exports = router;
