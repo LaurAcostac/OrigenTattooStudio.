@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+
+
 // Controllers
 const controllerBooking = require('../controller/booking.controller');
 const controllerClients = require('../controller/clients.controller');
@@ -8,7 +10,10 @@ const controllerPiercings = require('../controller/piercings.controller');
 const controllerTattooArtists = require('../controller/tattooartists.controller');
 const controllerTattoos = require('../controller/tattoos.controller');
 const controllerUsers = require('../controller/users.controller');
+const controllerViews = require('../controller/views.controller')
 
+router.get('/landingpage', controllerViews.showLandingPage);
+router.get('/formregister', controllerViews.showFormRegister);
 // Booking
 /**
  * @swagger

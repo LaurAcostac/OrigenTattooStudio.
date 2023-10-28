@@ -22,10 +22,14 @@ swaggerSpec = {
   },
   apis: [`${path.join(__dirname, '/backend/routes/routes.js')}`]
 }
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/frontend/views/pages'))
+app.use(express.static(path.join(__dirname, '/frontend/static')))
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)))
-app.use('/api/v1/', routes);
+app.use('/', routes);
 
 app.listen(process.env.PORT, () => {
   console.log(`funciona en el puerto ${process.env.PORT}`);
