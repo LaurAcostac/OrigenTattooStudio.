@@ -22,6 +22,7 @@ swaggerSpec = {
   },
   apis: [`${path.join(__dirname, '/backend/routes/routes.js')}`]
 }
+const swaggerDoc = require('./swagger.json');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/frontend/views/pages'))

@@ -12,8 +12,9 @@ const controllerTattoos = require('../controller/tattoos.controller');
 const controllerUsers = require('../controller/users.controller');
 const controllerViews = require('../controller/views.controller')
 
-router.get('/landingpage', controllerViews.showLandingPage);
+router.get('/', controllerViews.showLandingPage);
 router.get('/formregister', controllerViews.showFormRegister);
+router.get('/formlogin', controllerViews.showFormLogin);
 // Booking
 /**
  * @swagger
@@ -257,6 +258,8 @@ router.put('/updateclient', controllerClients.updateClientController);
  *              description: client not found
  */
 router.delete('/deleteclient', controllerClients.deleteClientController);
+router.post('/loginclient', controllerClients.loginClientController);
+
 
 // Piercings
 /**
