@@ -80,8 +80,8 @@ exports.loginClientController = async (req, res) => {
       return res.json({
         error: result.error,
       });
-    } else if (result.ruta) {
-      return res.redirect(result.ruta);
+    } else {
+      return res.redirect(result.path)
     }
   } catch (error) {
     console.log(error);

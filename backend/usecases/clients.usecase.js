@@ -40,9 +40,9 @@ exports.loginClient = async (clientInfo) => {
   const token = await jwt.sign({ id: userInfo._id}, jwtSecret, {expiresIn: 18000000});
   if (isPasswordCorrect) {
     if (userInfo.rol === 'Cliente') {
-      // REDIRECT
+      return{path: '/'}
     } else if (usuario.rol === 'Administrador') {
-      // REDIRECT
+      return{path: 'Admin'}
     } else {
       return {error: 'NO SE RECONOCE EL ROL'}
     }
