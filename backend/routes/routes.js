@@ -15,6 +15,7 @@ const controllerViews = require('../controller/views.controller')
 router.get('/', controllerViews.showLandingPage);
 router.get('/formregister', controllerViews.showFormRegister);
 router.get('/formlogin', controllerViews.showFormLogin);
+router.get('/admin', controllerViews.showLandingPageAdmin);
 // Booking
 /**
  * @swagger

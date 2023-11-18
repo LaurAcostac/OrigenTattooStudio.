@@ -9,3 +9,7 @@ exports.showFormRegister = async (req,res) => {
 exports.showFormLogin = async (req,res) => {
     res.render('loginclients')
 }
+
+exports.showLandingPageAdmin = async (req, res) => {
+    res.render('landingadmin')
+}
