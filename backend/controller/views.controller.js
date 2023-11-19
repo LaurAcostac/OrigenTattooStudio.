@@ -1,3 +1,6 @@
+exports.showLandingAdmin = async (req, res) => {
+    res.render('landingadmin')
+}
 exports.showLandingPage = async (req, res) => {
     res.render('landingpage')
 }
@@ -10,6 +13,10 @@ exports.showFormLogin = async (req,res) => {
     res.render('loginclients')
 }
 
-exports.showLandingPageAdmin = async (req, res) => {
-    res.render('landingadmin')
+exports.showTattoosCatalogue = async (req, res) => {
+    res.render('tattooscatalogue')
+}
+
+exports.showPiercingsCatalogue = async (req, res) => {
+    res.render('piercingscatalogue')
 }

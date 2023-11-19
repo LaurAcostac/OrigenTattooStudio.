@@ -71,19 +71,3 @@ exports.deleteClientController = async (req, res) => {
     console.log(error);
   }
 };
-
-exports.loginClientController = async (req, res) => {
-  try {
-    const result = await clientUseCases.loginClient(req.body);
-
-    if (result.error) {
-      return res.json({
-        error: result.error,
-      });
-    } else {
-      return res.redirect(result.path)
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
