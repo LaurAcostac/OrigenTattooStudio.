@@ -17,7 +17,21 @@ router.get('/', controllerViews.showLandingPage);
 router.get('/formregister', controllerViews.showFormRegister);
 router.get('/formlogin', controllerViews.showFormLogin);
 router.get('/tattoocatalogue', controllerViews.showTattoosCatalogue);
-router.get('/piercingscatalogue', controllerViews.showPiercingsCatalogue)
+router.get('/piercingscatalogue', controllerViews.showPiercingsCatalogue);
+router.get('/makeabooking', controllerViews.showFormBooking);
+
+//ADMIN
+//Tatuajes
+router.get('/admintattoos', controllerViews.showAdminTattoo);
+
+//Piercings
+router.get('/adminpiercings', controllerViews.showAdminPiercing);
+
+//Tatuadores
+router.get('/admintattooartists', controllerViews.showAdminTattooArtists);
+
+//Citas
+router.get('/adminbooking', controllerViews.showAdminBooking);
 // Booking
 /**
  * @swagger
