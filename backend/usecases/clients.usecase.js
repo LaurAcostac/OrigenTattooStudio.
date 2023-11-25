@@ -1,5 +1,6 @@
 const clientsData = require('../data-access/clients.data');
 const usersData = require('../data-access/users.data');
+const bcrypt = require('bcrypt');
 
 exports.showClients = async () => {
   const clients = await clientsData.findAll();
@@ -55,4 +56,9 @@ exports.deleteClient = async (id) => {
   } else {
     return {error: 'No se eliminó'};
   }
+}
+
+exports.showProfile = async (id) => {
+  const client = clientsData.findOneResult({_id: id});
+  return client;
 }

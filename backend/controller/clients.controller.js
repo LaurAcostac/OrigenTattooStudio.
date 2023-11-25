@@ -20,6 +20,8 @@ exports.showClientController = async (req, res) =>{
 
 exports.createClientController = async (req, res) =>{
   try {
+    const imageDestination = `/assets/images/${req.file.originalname}`;
+    req.body.fotoDocumento = imageDestination;
     const result = await clientUseCases.createClient(req.body);
 
     if (result.error) {
@@ -71,3 +73,14 @@ exports.deleteClientController = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.showProfileController = async (req, res) => {
+  try {
+    const client = await clientUseCases.showProfile('6561ff27dfed6c1bfc053913');
+    return res.render('clientprofile', {
+      client: client
+    });
+  } catch (error) {
+    console.log(error)
+  }
+}

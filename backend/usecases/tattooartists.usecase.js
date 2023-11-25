@@ -24,10 +24,11 @@ exports.createTattooArtists = async (tattooartistInfo) => {
 };
 
 exports.updateTattooArtist = async (infoUpdate) => {
-  const {nombre, apellido, celular, documento, correo, contrasena} = infoUpdate;
+  const {nombre, apellido, especialidad, celular, documento, correo, contrasena} = infoUpdate;
   const infoToUpdate = {
     nombre: nombre,
     apellido: apellido,
+    especialidad: especialidad,
     celular: celular,
     documento: documento,
     correo: correo,

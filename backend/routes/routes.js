@@ -11,13 +11,17 @@ const controllerTattooArtists = require('../controller/tattooartists.controller'
 const controllerTattoos = require('../controller/tattoos.controller');
 const controllerUsers = require('../controller/users.controller');
 const controllerViews = require('../controller/views.controller')
+const upload = require('../middleware/uploadimages');
 
 router.get('/admin', controllerViews.showLandingAdmin);
 router.get('/', controllerViews.showLandingPage);
 router.get('/formregister', controllerViews.showFormRegister);
+router.get('/profile', controllerClients.showProfileController);
 router.get('/formlogin', controllerViews.showFormLogin);
 router.get('/tattoocatalogue', controllerViews.showTattoosCatalogue);
 router.get('/piercingscatalogue', controllerViews.showPiercingsCatalogue)
+
+
 // Booking
 /**
  * @swagger
@@ -67,7 +71,7 @@ router.get('/piercingscatalogue', controllerViews.showPiercingsCatalogue)
  *                          items:
  *                              $ref: '#/components/schemas/Booking'
  */
-router.get('/showbooking', controllerBooking.showBookingController);
+router.get('/showbooking', upload.single('fotoDocumento'), controllerBooking.showBookingController);
 // CREATE BOOKING
 /**
  * @swagger
@@ -218,7 +222,7 @@ router.get('/showclient', controllerClients.showClientController);
  *          200:
  *              description: new client created successfully
  */
-router.post('/newclient', controllerClients.createClientController);
+router.post('/newclient', upload.single('fotoDocumento'), controllerClients.createClientController);
 // UPDATE CLIENT
 /**
  * @swagger
@@ -323,7 +327,7 @@ router.get('/showpiercing', controllerPiercings.showPiercingController);
  *          200:
  *              description: new piercing created successfully
  */
-router.post('/newpiercing', controllerPiercings.createPiercingController);
+router.post('/newpiercing', upload.single('fotoDocumento'), controllerPiercings.createPiercingController);
 // UPDATE PIERCING
 /**
  * @swagger
@@ -440,7 +444,7 @@ router.get('/showtattoo', controllerTattoos.showTattooController);
  *          200:
  *              description: new tattoo created successfully
  */
-router.post('/newtattoo', controllerTattoos.createTattooController);
+router.post('/newtattoo', upload.single('fotoDocumento'), controllerTattoos.createTattooController);
 // UPDATE TATTOO
 /**
  * @swagger
@@ -658,7 +662,7 @@ router.get('/showtattooartist', controllerTattooArtists.showTattooArtistControll
  *          200:
  *              description: new tattoo artists created successfully
  */
-router.post('/newtattooartist', controllerTattooArtists.createtattooArtistController);
+router.post('/newtattooartist', upload.single('fotoDocumento'), controllerTattooArtists.createtattooArtistController);
 // UPDATE TATTOOARTIST
 /**
  * @swagger

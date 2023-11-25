@@ -31,7 +31,7 @@
                 <div class="col-xl-6">
                   <div class="card-body p-md-5 text-black">
                     <h2 class="mb-5">Registro de clientes</h2>
-                    <form onsubmit="return validatePassword()" action="/newclient" method="post">
+                    <form onsubmit="return validatePassword()" action="/newclient" method="post" enctype="multipart/form-data">
                       <div class="row">
                         <div class="col-md-6 mb-4">
                           <div class="form-outline">
@@ -100,8 +100,8 @@
                       </div>
 
                       <div class="form-outline mb-4">
-                        <input type="text" id="fotoDocumento" name="fotoDocumento"
-                          class="form-control form-control-lg" />
+                        <input type="file" id="fotoDocumento" name="fotoDocumento"
+                          class="form-control form-control-lg" required />
                         <label class="form-label" for="fotoDocumento">Foto del Documento</label>
                       </div>
 

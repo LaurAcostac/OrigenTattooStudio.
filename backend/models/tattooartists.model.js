@@ -9,6 +9,11 @@ const schemaTattooartist = new mongoose.Schema({
     type: String,
     required: [true, 'Se require ingresar un apellido'],
   },
+  especialidad: {
+    type: String,
+    required: [true, 'Se requiere una especialidad'],
+    enum: ['Tatuador', 'Perforador']
+  },
   celular: {
     type: String,
     required: [true, 'Se require ingresar un número de celualr'],

@@ -20,3 +20,7 @@ exports.showTattoosCatalogue = async (req, res) => {
 exports.showPiercingsCatalogue = async (req, res) => {
     res.render('piercingscatalogue')
 }
+
+exports.showAdminTattoos = async (req, res) => {
+    res.render('admintattoos')
+}
